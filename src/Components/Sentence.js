@@ -1,26 +1,44 @@
-import React from "react";
+import React, { useState } from "react";
 
 const RandomSentence = ({
-  randomSentence,
   splitRandomSentence,
   splitSentence,
+  gameOver,
+  seconds,
 }) => {
+  const empty = [];
   return (
-    <div className="sentence">
-      {splitRandomSentence.map((word, index) => {
-        console.log(word);
-        console.log(splitSentence[index]);
-        let color;
-        if (index < splitSentence.length) {
-          color = word === splitSentence[index] ? "green" : "red";
-        }
-        return (
-          <span key={index} style={{ backgroundColor: color }}>
-            {word + " "}
-          </span>
-        );
-      })}
-    </div>
+    <>
+      <div className="sentence">
+        {splitRandomSentence.map((word, index) => {
+          let opacity;
+          if (index < splitSentence.length) {
+            if (word === splitSentence[index]) {
+              opacity = "correct";
+              empty.push(word);
+            } else {
+              opacity = "wrong";
+            }
+          }
+          console.log(empty);
+          return (
+            <span key={index} className={opacity}>
+              {word + " "}
+            </span>
+          );
+        })}
+      </div>
+      <div className="correct-words">
+        {gameOver && empty.length > 0 ? (
+          <div>
+            <span>You spelt these words corrctly in {60 - seconds}seconds</span>
+            {empty.map((s, i) => {
+              return <div key={i}>{s}</div>;
+            })}
+          </div>
+        ) : null}
+      </div>
+    </>
   );
 };
 
