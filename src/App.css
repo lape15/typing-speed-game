@@ -1,0 +1,25 @@
+.App {
+  border: 2px solid red;
+  height: 85vh;
+  background-color: #fff;
+  padding: 30px 50px;
+}
+
+.container {
+  border: 2px solid green;
+  padding: 40px 50px;
+  text-align: center;
+  height: 70%;
+}
+
+.sentence {
+  border: 2px solid blue;
+  width: 40%;
+  margin: 20px auto;
+  padding: 10px;
+  height: 60px;
+}
+
+span {
+  font-size: 14px;
+}
