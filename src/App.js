@@ -55,7 +55,7 @@ const App = () => {
   return (
     <div className="App">
       <div className="container">
-        <h2>Test your typing skills</h2>
+        <h2>Test out your typing skills</h2>
         <div>
           {seconds}s {seconds === 0 ? <span>Game Over</span> : null}
           {sentence === randomSentence ? <span>You win</span> : null}
