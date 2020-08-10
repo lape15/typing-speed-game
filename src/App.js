@@ -10,7 +10,7 @@ const App = () => {
   const [gameOver, setGameOver] = useState(false);
   const [correctWord, setCorrectWord] = useState(0);
   const [randomSentence, setRandomSentence] = useState(
-    requireSentence({ words: Math.floor(Math.random() * 20) })
+    requireSentence({ words: Math.floor(Math.random() * 30) })
   );
 
   useEffect(() => {
@@ -39,7 +39,7 @@ const App = () => {
 
   const restartGame = () => {
     setRandomSentence(
-      requireSentence({ words: Math.floor(Math.random() * 20) })
+      requireSentence({ words: Math.floor(Math.random() * 30) })
     );
     setGameOver(false);
     setSeconds(60);
