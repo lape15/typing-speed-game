@@ -1,15 +1,14 @@
 .App {
-  border: 2px solid red;
   height: 85vh;
   background-color: #fff;
-  padding: 40px 50px;
+  padding: 40px 70px;
 }
 
 .container {
-  border: 2px solid green;
   padding: 40px 50px;
   text-align: center;
-  height: 70%;
+  min-height: 80%;
+  position: relative;
 }
 
 .sentence {
@@ -17,26 +16,88 @@
   width: 40%;
   margin: 20px auto;
   padding: 10px;
-  min-height: 35px;
+  min-height: 40px;
   word-wrap: break-word;
   word-break: keep-all;
   box-shadow: 0px 12px 6px rgba(255, 255, 255, 0.07);
-  background-color: #db929d;
-  /* background: linear-gradient(to right, #db929d, rgba(229, 234, 249, 0.4)); */
+  background-color: #fff;
+  color: #666666;
+  font-size: 24px;
+  border-radius: 7px;
 }
 
 span {
   font-size: 16px;
   font-weight: 600;
   padding: 5px;
-  transform: translateY(140px);
-  /* opacity: 5; */
 }
 
 .correct {
   color: green;
-  text-decoration: line-through;
+  text-decoration: underline;
 }
 .wrong {
   color: red;
+}
+
+.correct-words {
+  border: 1px solid rgba(0, 0, 0, 0.7);
+  position: absolute;
+  right: 0;
+  top: 0;
+  transform: translate(-30px, 50px) scale(1);
+  min-height: 70px;
+  padding: 10px;
+  transform-origin: center;
+  box-shadow: 0 5px 35px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease-in;
+  border: 1px solid rgba(0, 0, 0, 0.7);
+}
+
+textarea {
+  width: 40%;
+  min-height: 40px;
+  padding: 10px;
+  background-color: #fff;
+  color: #666666;
+  border-radius: 7px;
+  letter-spacing: 1px;
+}
+
+.hidden {
+  /* transform: translateY(-170px); */
+  transform: scale(0);
+  transition: all 0.3s ease-in;
+  transform-origin: center;
+}
+
+.spelt {
+  line-height: 28px;
+}
+
+button {
+  margin-top: 20px;
+  padding: 10px;
+  border-radius: 7px;
+  outline: none;
+  border: 1px solid rgba(0, 0, 0, 0.7);
+  cursor: pointer;
+  letter-spacing: 1px;
+}
+
+@media only screen and (max-width: 769px) {
+  .container {
+    padding: 5px;
+  }
+  .sentence {
+    width: 100%;
+  }
+  textarea {
+    width: 100%;
+  }
+
+  .correct-words {
+    position: static;
+    transform: translate(5px, -8px) scale(1);
+  }
 }

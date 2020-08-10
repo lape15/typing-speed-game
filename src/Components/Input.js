@@ -8,16 +8,12 @@ const TextArea = ({
 }) => {
   return (
     <div className="form-filed">
-      <label>
-        Sentence
-        <textarea
-          value={sentence}
-          onChange={handleSentenceChange}
-          placeholder="Type sentence here"
-          readOnly={gameOver}
-        />
-      </label>
-      <button type="submit">Restart</button>
+      <textarea
+        value={sentence}
+        onChange={handleSentenceChange}
+        placeholder="Type sentence here"
+        readOnly={gameOver}
+      />
     </div>
   );
 };

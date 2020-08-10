@@ -6,10 +6,10 @@ var requireSentence = require("random-sentence");
 
 const App = () => {
   const [sentence, setSentence] = useState("");
-  const [seconds, setSeconds] = useState(45);
+  const [seconds, setSeconds] = useState(60);
   const [gameOver, setGameOver] = useState(false);
   const [correctWord, setCorrectWord] = useState(0);
-  const [randomSentence] = useState(
+  const [randomSentence, setRandomSentence] = useState(
     requireSentence({ words: Math.floor(Math.random() * 20) })
   );
 
@@ -18,8 +18,13 @@ const App = () => {
     interval = setTimeout(() => {
       setSeconds((seconds) => seconds - 1);
     }, 1000);
-    if (seconds === 0 || sentence === randomSentence) {
-      userFinish();
+    if (seconds === 0) {
+      // restartGame();
+      clearInterval(interval);
+      setTimeout(restartGame, 2500);
+    }
+    if (sentence === randomSentence) {
+      setGameOver(true);
       clearInterval(interval);
     }
     return () => {
@@ -27,10 +32,19 @@ const App = () => {
     };
   }, [seconds, sentence, randomSentence]);
 
-  const userFinish = () => {
-    setGameOver(true);
-  };
+  // const userFinish = () => {
+  //   setGameOver(false);
+  //   setSeconds(45);
+  // };
 
+  const restartGame = () => {
+    setRandomSentence(
+      requireSentence({ words: Math.floor(Math.random() * 20) })
+    );
+    setGameOver(false);
+    setSeconds(60);
+    setSentence("");
+  };
   const handleSentenceChange = (e) => {
     setSentence(e.target.value);
   };
@@ -38,13 +52,12 @@ const App = () => {
   let splitSentence = sentence.split(" ");
   let splitRandomSentence = randomSentence.split(" ");
 
-  const [randomSentenceTotal] = useState(splitRandomSentence.length);
-
   return (
     <div className="App">
       <div className="container">
         <div>
           {seconds}s {seconds === 0 ? <span>Game Over</span> : null}
+          {sentence === randomSentence ? <span>You win</span> : null}
         </div>
         <RandomSentence
           randomSentence={randomSentence}
@@ -52,6 +65,7 @@ const App = () => {
           splitSentence={splitSentence}
           gameOver={gameOver}
           seconds={seconds}
+          sentence={sentence}
         />
         <TextArea
           // handleSubmit={handleSubmit}
@@ -59,9 +73,8 @@ const App = () => {
           sentence={sentence}
           gameOver={gameOver}
         />
+        <button onClick={restartGame}>Generate sentence</button>
       </div>
-
-      <div className="preview"></div>
     </div>
   );
 };
