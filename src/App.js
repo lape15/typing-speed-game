@@ -8,16 +8,23 @@ const App = () => {
   const [sentence, setSentence] = useState("");
   const [seconds, setSeconds] = useState(30);
   const [gameOver, setGameOver] = useState(false);
+  const [startTimer, setStartTimer] = useState(false);
 
   const [randomSentence, setRandomSentence] = useState(
     requireSentence({ words: Math.floor(Math.random() * 30) })
   );
 
+  // const handleEasy = () => {
+  // setEasy(true)
+  // }
   useEffect(() => {
     let interval = null;
-    interval = setTimeout(() => {
-      setSeconds((seconds) => seconds - 1);
-    }, 1000);
+    if (startTimer) {
+      interval = setTimeout(() => {
+        setSeconds((seconds) => seconds - 1);
+      }, 500);
+    }
+
     if (seconds === 0) {
       clearInterval(interval);
       setTimeout(restartGame, 2500);
@@ -29,7 +36,7 @@ const App = () => {
     return () => {
       clearInterval(interval);
     };
-  }, [seconds, sentence, randomSentence]);
+  }, [seconds, sentence, randomSentence, startTimer]);
 
   const restartGame = () => {
     setRandomSentence(
@@ -38,8 +45,10 @@ const App = () => {
     setGameOver(false);
     setSeconds(30);
     setSentence("");
+    setStartTimer(false);
   };
   const handleSentenceChange = (e) => {
+    // setStartTimer(true);
     setSentence(e.target.value);
   };
 
@@ -66,6 +75,7 @@ const App = () => {
           handleSentenceChange={handleSentenceChange}
           sentence={sentence}
           gameOver={gameOver}
+          setStartTimer={setStartTimer}
         />
         <button onClick={restartGame}>Generate sentence</button>
       </div>

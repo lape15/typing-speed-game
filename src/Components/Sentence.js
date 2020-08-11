@@ -16,11 +16,11 @@ const RandomSentence = ({
         {splitRandomSentence.map((word, index) => {
           let opacity;
           if (index < splitSentence.length) {
-            if (word.toLowerCase() === splitSentence[index].toLowerCase()) {
+            if (word === splitSentence[index]) {
               opacity = "correct";
               empty.push(word);
             } else {
-              opacity = "wrong";
+              //   opacity = "wrong";
             }
           }
 
