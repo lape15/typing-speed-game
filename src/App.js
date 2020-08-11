@@ -6,9 +6,9 @@ var requireSentence = require("random-sentence");
 
 const App = () => {
   const [sentence, setSentence] = useState("");
-  const [seconds, setSeconds] = useState(60);
+  const [seconds, setSeconds] = useState(30);
   const [gameOver, setGameOver] = useState(false);
-  const [correctWord, setCorrectWord] = useState(0);
+
   const [randomSentence, setRandomSentence] = useState(
     requireSentence({ words: Math.floor(Math.random() * 30) })
   );
@@ -19,7 +19,6 @@ const App = () => {
       setSeconds((seconds) => seconds - 1);
     }, 1000);
     if (seconds === 0) {
-      // restartGame();
       clearInterval(interval);
       setTimeout(restartGame, 2500);
     }
@@ -32,17 +31,12 @@ const App = () => {
     };
   }, [seconds, sentence, randomSentence]);
 
-  // const userFinish = () => {
-  //   setGameOver(false);
-  //   setSeconds(45);
-  // };
-
   const restartGame = () => {
     setRandomSentence(
-      requireSentence({ words: Math.floor(Math.random() * 30) })
+      requireSentence({ words: Math.floor(Math.random() * 40) })
     );
     setGameOver(false);
-    setSeconds(60);
+    setSeconds(30);
     setSentence("");
   };
   const handleSentenceChange = (e) => {
@@ -69,7 +63,6 @@ const App = () => {
           sentence={sentence}
         />
         <TextArea
-          // handleSubmit={handleSubmit}
           handleSentenceChange={handleSentenceChange}
           sentence={sentence}
           gameOver={gameOver}
