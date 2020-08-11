@@ -14,9 +14,6 @@ const App = () => {
     requireSentence({ words: Math.floor(Math.random() * 30) })
   );
 
-  // const handleEasy = () => {
-  // setEasy(true)
-  // }
   useEffect(() => {
     let interval = null;
     if (startTimer) {
@@ -27,7 +24,7 @@ const App = () => {
 
     if (seconds === 0) {
       clearInterval(interval);
-      setTimeout(restartGame, 2500);
+      restartGame();
     }
     if (sentence === randomSentence) {
       setGameOver(true);
