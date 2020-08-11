@@ -40,7 +40,7 @@ const RandomSentence = ({
       >
         {empty.length > 0 && sentence === randomSentence ? (
           <div className="spelt">
-            <span>Spelt words in {60 - seconds}seconds</span>
+            <span>Spelt words in {30 - seconds}seconds</span>
             {empty.map((s, i) => {
               return <div key={i}>{s}</div>;
             })}
