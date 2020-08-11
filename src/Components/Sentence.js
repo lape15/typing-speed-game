@@ -25,7 +25,6 @@ const RandomSentence = ({
                 }
               }
             } else {
-              console.log("Not a match");
               opacity = "wrong";
             }
           }
