@@ -48,9 +48,9 @@ const RandomSentence = ({
             <span>
               {empty.length} words spelt correctly in {30 - seconds}s
             </span>
-            {empty.map((s, i) => {
+            {/* {empty.map((s, i) => {
               return <div key={i}>{s}</div>;
-            })}
+            })} */}
           </div>
         ) : null}
       </div>
