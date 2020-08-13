@@ -2,7 +2,7 @@ import React from "react";
 
 const TextArea = ({
   handleSentenceChange,
-  handleSubmit,
+  setStartTimer,
   sentence,
   gameOver,
 }) => {
@@ -13,6 +13,11 @@ const TextArea = ({
         onChange={handleSentenceChange}
         placeholder="Type sentence here"
         readOnly={gameOver}
+        onKeyPress={(e) => {
+          if (e.key) {
+            setStartTimer(true);
+          }
+        }}
       />
     </div>
   );

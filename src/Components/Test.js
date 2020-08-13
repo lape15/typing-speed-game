@@ -3,6 +3,7 @@ import React from "react";
 const RandomSentence = ({
   splitRandomSentence,
   splitSentence,
+  gameOver,
   seconds,
   sentence,
   randomSentence,
@@ -16,15 +17,9 @@ const RandomSentence = ({
           let opacity;
           if (index < splitSentence.length) {
             if (word === splitSentence[index]) {
+              opacity = "correct";
               empty.push(word);
-              let splitWord = word.split("");
-              let splitSingleSentence = splitSentence[index].split("");
-              for (let i = 0; i < splitWord.length; i++) {
-                if (splitWord[i] === splitSingleSentence[i]) {
-                  opacity = "correct";
-                }
-              }
-            } else {
+            } else if (word.length !== splitSentence[index].length) {
               opacity = "wrong";
             }
           }
@@ -48,9 +43,9 @@ const RandomSentence = ({
             <span>
               {empty.length} words spelt correctly in {30 - seconds}s
             </span>
-            {/* {empty.map((s, i) => {
+            {empty.map((s, i) => {
               return <div key={i}>{s}</div>;
-            })} */}
+            })}
           </div>
         ) : null}
       </div>
