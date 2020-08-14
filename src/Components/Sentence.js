@@ -45,13 +45,8 @@ const RandomSentence = ({
       >
         {empty.length > 0 && sentence === randomSentence ? (
           <div className="spelt">
-            <span>
-              {empty.length}/{60 - seconds} words/sec
-            </span>{" "}
-            <br />
-            <span>
-              {randomSentence.length} characters spelt in {60 - seconds}s
-            </span>
+            <span>{empty.length} words per min</span> <br />
+            <span>{randomSentence.length} characters per min</span>
           </div>
         ) : null}
       </div>

@@ -11,7 +11,7 @@ const App = () => {
   const [startTimer, setStartTimer] = useState(false);
 
   const [randomSentence, setRandomSentence] = useState(
-    requireSentence({ words: 50 })
+    requireSentence({ words: 100 })
   );
 
   useEffect(() => {
@@ -36,7 +36,7 @@ const App = () => {
   }, [seconds, sentence, randomSentence, startTimer]);
 
   const restartGame = () => {
-    setRandomSentence(requireSentence({ words: 50 }));
+    setRandomSentence(requireSentence({ words: 100 }));
     setGameOver(false);
     setSeconds(60);
     setSentence("");
