@@ -46,11 +46,26 @@ const RandomSentence = ({
         {empty.length > 0 && sentence === randomSentence ? (
           <div className="spelt">
             <span>
-              {empty.length} words spelt correctly in {30 - seconds}s
+              {empty.length}/{60 - seconds} words/sec
+            </span>{" "}
+            <br />
+            <span>
+              {randomSentence.length} characters spelt in {60 - seconds}s
             </span>
-            {/* {empty.map((s, i) => {
-              return <div key={i}>{s}</div>;
-            })} */}
+          </div>
+        ) : null}
+      </div>
+      <div
+        className={`${
+          empty.length > 0 && seconds === 0 ? "correct-words" : "hidden"
+        }`}
+      >
+        {empty.length > 0 && seconds === 0 && sentence !== randomSentence ? (
+          <div className="spelt">
+            <span>
+              {empty.length} words spelt correctly out of{" "}
+              {splitRandomSentence.length} in {30 - seconds}s
+            </span>
           </div>
         ) : null}
       </div>
