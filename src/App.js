@@ -6,12 +6,12 @@ var requireSentence = require("random-sentence");
 
 const App = () => {
   const [sentence, setSentence] = useState("");
-  const [seconds, setSeconds] = useState(30);
+  const [seconds, setSeconds] = useState(60);
   const [gameOver, setGameOver] = useState(false);
   const [startTimer, setStartTimer] = useState(false);
 
   const [randomSentence, setRandomSentence] = useState(
-    requireSentence({ words: Math.floor(Math.random() * 30) })
+    requireSentence({ words: 50 })
   );
 
   useEffect(() => {
@@ -24,7 +24,7 @@ const App = () => {
 
     if (seconds === 0) {
       clearInterval(interval);
-      restartGame();
+      // restartGame();
     }
     if (sentence === randomSentence) {
       setGameOver(true);
@@ -36,11 +36,9 @@ const App = () => {
   }, [seconds, sentence, randomSentence, startTimer]);
 
   const restartGame = () => {
-    setRandomSentence(
-      requireSentence({ words: Math.floor(Math.random() * 40) })
-    );
+    setRandomSentence(requireSentence({ words: 50 }));
     setGameOver(false);
-    setSeconds(30);
+    setSeconds(60);
     setSentence("");
     setStartTimer(false);
   };
